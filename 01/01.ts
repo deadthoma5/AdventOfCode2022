@@ -1,11 +1,10 @@
 import { readFileSync } from "fs"
 
 const fileName: string = './01/input'
-const lines:string = readFileSync(fileName,'utf-8')
+const lines: string = readFileSync(fileName, 'utf-8')
 
 var elves = lines.split('\n\n')
-
-let calories = []
+var calories = []
 
 elves.forEach(function (elf) {
     let sum = 0
