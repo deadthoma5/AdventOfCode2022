@@ -35,8 +35,8 @@ var values = new Map ([
 var part1 = 0
 
 rounds.forEach(function (round) {
-    var opponent = round.split(' ')[0]
-    var mine = round.split(' ')[1]
+    let opponent = round.split(' ')[0]
+    let mine = round.split(' ')[1]
 
     if (mine == winners.get(opponent))    // win
         part1 += 6 + values.get(mine)
@@ -54,8 +54,8 @@ console.log("Part 1:", part1)
 var part2 = 0
 
 rounds.forEach(function (round) {
-    var opponent = round.split(' ')[0]
-    var mine = round.split(' ')[1]
+    let opponent = round.split(' ')[0]
+    let mine = round.split(' ')[1]
 
     if (mine == "X")      // need to lose
         part2 += 0 + values.get(losers.get(opponent))
