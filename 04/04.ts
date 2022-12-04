@@ -24,8 +24,8 @@ var part2 = 0
 assignments.forEach(function(assignment) {
     const a = assignment.split(',')[0].split('-').map(x => parseInt(x))
     const b = assignment.split(',')[1].split('-').map(x => parseInt(x))
-    const arange = Array.from(Array(a[1] - a[0] + 1).keys()).map(x => x + a[0])
-    const brange = Array.from(Array(b[1] - b[0] + 1).keys()).map(x => x + b[0])
+    const arange = range(a[0], a[1])
+    const brange = range(b[0], b[1])
     const hasOverlap = brange.some(function(val) { return arange.indexOf(val) >= 0 }) || arange.some(function(val) { return brange.indexOf(val) >= 0 })
     if (hasOverlap)
         part2++
