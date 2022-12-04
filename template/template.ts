@@ -1,5 +1,6 @@
 import { Console } from "console"
 import { readFileSync } from "fs"
+import * as tools from "./tools"
 
 // Parse input
 const fileName: string = './##/input_test'
