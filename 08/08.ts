@@ -5,7 +5,6 @@ import * as tools from "./tools"
 // Parse input
 const fileName: string = './08/input'
 const lines: string[] = readFileSync(fileName, 'utf-8').split('\n')
-
 var rows = lines.length
 var cols = lines[0].length
 var grid: number[][] = Array.from({length: rows}, () => Array.from({length: cols}))
@@ -15,25 +14,8 @@ for (let row = 0; row < rows; row++) {
     }
 }
 
-// Part 1
+// Main program loop (common to both parts)
 var part1 = 0
-for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-        let tree = grid[row][col]
-        let rowarray = grid[row]
-        let colarray = grid.map(x => x[col])
-        let top = colarray.slice(0, row)
-        let bottom = colarray.slice(row + 1)
-        let left = rowarray.slice(0, col)
-        let right = rowarray.slice(col + 1)
-        let isVisibleAllDirections: boolean = isVisible(top, tree) || isVisible(bottom, tree) || isVisible(left, tree) || isVisible(right, tree)
-        if (isVisibleAllDirections)
-            part1++
-    }
-}
-console.log("Part 1:", part1)
-
-// Part 2
 var part2 = 0
 for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
@@ -44,11 +26,19 @@ for (let row = 0; row < rows; row++) {
         let bottom = colarray.slice(row + 1)
         let left = rowarray.slice(0, col).reverse()
         let right = rowarray.slice(col + 1)
+
+        // Part 1
+        let isVisibleAllDirections: boolean = isVisible(top, tree) || isVisible(bottom, tree) || isVisible(left, tree) || isVisible(right, tree)
+        if (isVisibleAllDirections)
+            part1++
+
+        // Part 2
         let scenicScore = score(top, tree) * score(bottom, tree) * score(left, tree) * score(right, tree)
         if (scenicScore > part2)
             part2 = scenicScore
     }
 }
+console.log("Part 1:", part1)
 console.log("Part 2:", part2)
 
 // isVisible() determines if a given tree is visible from one view's direction for Part 1
