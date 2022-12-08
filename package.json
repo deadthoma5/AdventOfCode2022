@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^18.11.10"
+  },
+  "dependencies": {
+    "pycollections": "^0.9.0"
   }
 }
