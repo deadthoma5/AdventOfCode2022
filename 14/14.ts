@@ -91,19 +91,16 @@ function simulate(grid: string[][]): number {
     let ysand = 0
 
     while (true) {
-        if (grid[xsand][ysand + 1] == '.' || grid[xsand][ysand + 1] == '~') {
+        if (grid[xsand][ysand + 1] == '.') {
             ysand += 1
-            grid[xsand][ysand] = '~'
-        } else if (grid[xsand - 1][ysand + 1] == '.' || grid[xsand - 1][ysand + 1] == '~') {
+        } else if (grid[xsand - 1][ysand + 1] == '.') {
             xsand -= 1
             ysand += 1
-            grid[xsand][ysand] = '~'
-        } else if (grid[xsand + 1][ysand + 1] == '.' || grid[xsand + 1][ysand + 1] == '~') {
+        } else if (grid[xsand + 1][ysand + 1] == '.') {
             xsand += 1
             ysand += 1
-            grid[xsand][ysand] = '~'
-        } else if (grid[xsand][ysand] == "O") {    // Part 2: sand source has a piece of sand in it
-            return sand
+        } else if (grid[xsand][ysand] == "O") {
+            return sand    // Part 2 end condition (sand source has a piece of sand in it)
         } else {
             if (xsand < grid.length - 1 && ysand < grid[0].length - 1) {
                 grid[xsand][ysand] = 'O'
@@ -111,11 +108,10 @@ function simulate(grid: string[][]): number {
                 xsand = 500
                 ysand = 0
             } else {
-                return sand
+                return sand    // Part 1 end condition (reached grid boundary)
             }
         }
     }
-    return sand
 }
 
 // findDimensions() returns the max X and Y values from the input
