@@ -18,11 +18,11 @@ console.log("Part 2:", part2)
 
 // initGrid() returns a 2D grid initialized per input and Part 1+2 specifications
 function initGrid(lines: string[], part: number): string[][] {
-    let dimensions: number[] = findDimensions(lines)
+    let [xmax, ymax]: number[] = findDimensions(lines)
     if (part == 1)
-        grid = Array.from({length: dimensions[0] + 1}, () => Array.from({length: dimensions[1] + 1}))
+        grid = Array.from({length: xmax + 1}, () => Array.from({length: ymax + 1}))
     else if (part == 2)
-        grid = Array.from({length: dimensions[0] * 2}, () => Array.from({length: dimensions[1] + 10}))
+        grid = Array.from({length: xmax * 2}, () => Array.from({length: ymax + 10}))
     else
         throw new Error()
 
@@ -52,7 +52,7 @@ function initGrid(lines: string[], part: number): string[][] {
                 let range: number[]
                 if (xf > xi) {    // right
                     range = tools.range(xi, xf)
-                } else {
+                } else {    // left
                     range = tools.range(xf, xi).reverse()
                 }
                 for (let x in range) {
@@ -61,11 +61,12 @@ function initGrid(lines: string[], part: number): string[][] {
             }
         }
     })
-    grid[500][0] = '+'
+
+    grid[500][0] = '+'    // sand source
 
     if (part == 2) {
         for (let x = 0; x < grid.length; x++) {
-            grid[x][dimensions[1] + 2] = '#'
+            grid[x][ymax + 2] = '#'    // Part 2: fill x-axis with rocks (#) two units below bottom-most rock layer from input
         }
     }
 
