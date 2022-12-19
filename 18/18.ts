@@ -39,7 +39,7 @@ function solve1(): number {
     return sum
 }
 
-// solve2() is the main program loop for Part2
+// solve2() is the main program loop for Part2 (BFS algorithm)
 function solve2(): number {
     let sum = 0
 
@@ -56,9 +56,7 @@ function solve2(): number {
     queue.push(JSON.stringify([xmin, ymin, zmin]))
 
     while (queue.length > 0) {
-        queue.reverse()
         let xyz = queue.pop()
-        queue.reverse()
 
         if (water.has(xyz))
             continue
@@ -67,7 +65,6 @@ function solve2(): number {
 
         let neighbors = getNeighbors(JSON.parse(xyz))
 
-        //neighbors.forEach(function (neighbor) {
         for (let neighbor of neighbors) {
             let [nx, ny, nz] = JSON.parse(neighbor)
 
