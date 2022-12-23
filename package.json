@@ -3,6 +3,7 @@
     "@types/node": "^18.11.10"
   },
   "dependencies": {
+    "nerdamer": "^1.1.13",
     "pycollections": "^0.9.0"
   }
 }
