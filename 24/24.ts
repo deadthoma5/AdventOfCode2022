@@ -129,8 +129,8 @@ while (queue.size > 0) {
     let nextQueue = new Set<math.Complex>()
     nextQueue_.forEach(q => nextQueue.add(math.complex(q)))
     queue = nextQueue
-    console.log("time:", time, ", queue size:", queue.size)
-    console.log()
+    //console.log("time:", time, ", queue size:", queue.size)
+    //console.log()
 
     if (isDone && goals.length > 0) {
         if (goal.equals(finish)) {
